@@ -3,3 +3,15 @@ node_js:
     - 0.10
 notifications:
     - edgard-rodrigo@hotmail.com
+before_install:
+    - npm install -g bower
+    - npm install -g grunt-cli
+    - npm install -g karma-cli
+    - npm install -g protractor
+    - webdriver-manager update
+    - bower install
+before_script:
+    - grunt
+    - cd dist
+script:
+    - karma start config/karma.config.js --single-run --browsers PhantomJS
